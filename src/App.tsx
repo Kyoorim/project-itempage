@@ -1,9 +1,5 @@
-import ItemListContainer from '@pages/ItemListContainer';
+import Router from './routes';
 
 export default function App() {
-  return (
-    <>
-      <ItemListContainer />
-    </>
-  );
+  return <Router />;
 }

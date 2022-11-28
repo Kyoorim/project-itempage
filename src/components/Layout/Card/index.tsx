@@ -1,7 +1,11 @@
 import * as S from './style';
 
-const Card = ({ children }) => {
-  return <S.Wrapper>{children}</S.Wrapper>;
+type Props = {
+  children: React.ReactNode;
+};
+
+const Card: React.FC<Props> = ({ children, onClick }) => {
+  return <S.Wrapper onClick={onClick}>{children}</S.Wrapper>;
 };
 
 export default Card;

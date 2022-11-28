@@ -10,3 +10,10 @@ declare module '*.svg' {
   const src: string;
   export default src;
 }
+
+declare namespace NodeJS {
+  interface ProcessEnv {
+    NODE_ENV: 'development' | 'production' | 'test';
+    ACCESS_TOKEN: string;
+  }
+}

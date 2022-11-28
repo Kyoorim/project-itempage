@@ -1,13 +1,22 @@
+import { useState } from 'react';
 import Card from '@components/Layout/Card';
 import * as S from './style';
 import { BsSuitHeart } from 'react-icons/bs';
+import ItemDetail from '@components/ItemDetail';
 
-const ItemDetail = ({ item }) => {
+const ItemBox = ({ item }) => {
   const isLeader = item.leaders[0].name;
   const rsvp = item.club.meetings[0].startedAt;
 
+  const [modal, setModal] = useState<boolean>(false);
+
+  const modalHandler = () => {
+    setModal(!modal);
+  };
+
   return (
-    <Card>
+    <Card onClick={() => setModal(true)}>
+      {modal && <ItemDetail item={item} modalHandler={modalHandler} />}
       <S.ImageContainer src={item.club.coverUrl} />
       <S.BodyContainer>
         <h4>{item.club.name}</h4>
@@ -28,4 +37,4 @@ const ItemDetail = ({ item }) => {
   );
 };
 
-export default ItemDetail;
+export default ItemBox;
