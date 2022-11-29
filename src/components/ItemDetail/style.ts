@@ -17,7 +17,8 @@ export const Backwall = styled.div`
 export const Modal = styled.div`
   position: fixed;
   overflow-y: auto;
-  max-width: 50%;
+  width: 50%;
+  max-width: 500px;
   max-height: 80%;
   z-index: 100;
   background-color: white;
@@ -45,9 +46,18 @@ export const BodyContainer = styled.ul`
 export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  /* justify-content: flex-start; */
+  /* align-items: center; */
   padding: 15px;
   font-size: 0.8rem;
   color: #737373;
+  ul {
+    margin: 0;
+    padding-left: 0;
+    li {
+      list-style: none;
+    }
+  }
   span:first-of-type {
     font-size: 1rem;
     color: #ff6503;

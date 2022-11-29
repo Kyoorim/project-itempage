@@ -12,11 +12,12 @@ const ItemBox = ({ item }) => {
 
   const modalHandler = () => {
     setModal(!modal);
+    console.log(modal);
   };
 
   return (
-    <Card onClick={() => setModal(true)}>
-      {modal && <ItemDetail item={item} modalHandler={modalHandler} />}
+    <Card onClick={modalHandler}>
+      {modal && <ItemDetail item={item} />}
       <S.ImageContainer src={item.club.coverUrl} />
       <S.BodyContainer>
         <h4>{item.club.name}</h4>

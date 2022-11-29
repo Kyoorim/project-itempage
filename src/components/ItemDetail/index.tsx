@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import * as S from './style';
 
-const ItemDetail = ({ modalHandler, item }) => {
+const ItemDetail = ({ item }) => {
   const isLeader = item.leaders[0].name;
   const rsvp = item.club.meetings[0].startedAt;
 
@@ -20,7 +20,7 @@ const ItemDetail = ({ modalHandler, item }) => {
   }, []);
 
   return createPortal(
-    <S.Backwall onClick={modalHandler}>
+    <S.Backwall>
       <S.Modal>
         <S.ImageContainer src={item.club.coverUrl} />
         <S.BodyContainer>
@@ -48,7 +48,6 @@ const ItemDetail = ({ modalHandler, item }) => {
             ))}
           </ul>
         </S.InfoContainer>
-        <button>닫기</button>
       </S.Modal>
     </S.Backwall>,
     document.getElementById('modal')
