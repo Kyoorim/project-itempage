@@ -6,6 +6,12 @@ import { BsSuitHeart } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const scrollToTop = (event) => {
+    if (!window.scrollY) return;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const navigate = useNavigate();
   return (
     <S.Container>
@@ -19,7 +25,7 @@ const NavBar = () => {
         <BsSuitHeart />
       </div>
       <div>
-        <FiArrowUpCircle />
+        <FiArrowUpCircle onClick={scrollToTop} />
       </div>
     </S.Container>
   );
