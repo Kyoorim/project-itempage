@@ -8,7 +8,10 @@ import ItemBox from '@pages/ItemBox';
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
   const [searchItem, setSearchItem] = useState('');
-  const [filteredItems, setFilteredItems] = useState(items);
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const [filteredItems, setFilteredItems] = useState();
+
+  const searchTerm = searchParams.get('search') || '';
 
   const getItems = async () => {
     const URL = 'https://api.json-generator.com/templates/ePNAVU1sgGtQ/data';
@@ -32,22 +35,19 @@ const ItemListContainer = () => {
   }, []);
 
   const searchHandler = (event) => {
-    const query = event.target.value;
-    setSearchItem(query);
-
-    const searchList = items.filter((item) => {
-      return item.club.name.indexOf(query) !== -1;
-    });
-    setFilteredItems(searchList);
+    const search = event.target.value;
+    if (search) {
+      setSearchItem(search);
+      setSearchParams({ search });
+    } else setSearchParams({});
   };
 
   const filterHandler = (event) => {
     const selectedPlace = event.target.value;
-
-    const filterList = items.filter((item) => {
-      return item.club.place === selectedPlace;
-    });
-    setFilteredItems(filterList);
+    if (selectedPlace) {
+      setSearchItem(selectedPlace);
+      setSearchParams({ selectedPlace });
+    }
   };
 
   return (
@@ -55,7 +55,7 @@ const ItemListContainer = () => {
       <input
         type="text"
         name="search"
-        value={searchItem}
+        value={searchTerm}
         placeholder="검색어를 입력하세요"
         onChange={searchHandler}
       />
@@ -69,11 +69,16 @@ const ItemListContainer = () => {
         </select>
       </div>
       <S.Container>
-        {filteredItems.map((item) => {
-          return <ItemBox key={item.club.id} item={item} />;
-        })}
+        {items
+          .filter((val) => {
+            if (searchItem === '') return val;
+            else if (val.club.name.includes(searchItem)) return val;
+            else if (val.club.place === searchItem) return val;
+          })
+          .map((item) => (
+            <ItemBox key={item.club.id} item={item} />
+          ))}
       </S.Container>
-      {/* )} */}
     </S.Wrapper>
   );
 };
