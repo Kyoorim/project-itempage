@@ -17,8 +17,8 @@ export const Backwall = styled.div`
 export const Modal = styled.div`
   position: fixed;
   overflow-y: auto;
-  width: 50%;
-  max-width: 500px;
+  width: 500px;
+  max-width: 80%;
   max-height: 80%;
   z-index: 100;
   background-color: white;
@@ -40,6 +40,9 @@ export const BodyContainer = styled.ul`
   margin: 0;
   span {
     font-size: 0.9rem;
+  }
+  h4 {
+    color: black;
   }
 `;
 

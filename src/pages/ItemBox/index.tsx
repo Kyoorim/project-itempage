@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { Routes, Route } from 'react-router-dom';
 import Card from '@components/Layout/Card';
 import * as S from './style';
 import { BsSuitHeart } from 'react-icons/bs';
@@ -10,9 +12,10 @@ const ItemBox = ({ item }) => {
 
   const [modal, setModal] = useState<boolean>(false);
 
+  const navigate = useNavigate();
+
   const modalHandler = () => {
     setModal(!modal);
-    console.log(modal);
   };
 
   return (
