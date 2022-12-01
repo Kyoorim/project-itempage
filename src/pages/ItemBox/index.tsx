@@ -1,18 +1,15 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import { Routes, Route } from 'react-router-dom';
 import Card from '@components/Layout/Card';
 import * as S from './style';
 import { BsSuitHeart } from 'react-icons/bs';
 import ItemDetail from '@components/ItemDetail';
+import { ItemInfo } from '@libs/';
 
-const ItemBox = ({ item }) => {
+const ItemBox = ({ item }: ItemInfo) => {
   const isLeader = item.leaders[0].name;
   const rsvp = item.club.meetings[0].startedAt;
 
   const [modal, setModal] = useState<boolean>(false);
-
-  const navigate = useNavigate();
 
   const modalHandler = () => {
     setModal(!modal);

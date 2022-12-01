@@ -1,8 +1,10 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import * as S from './style';
+import { ItemInfo } from '@libs/';
+import { MeetingsInfo } from '@libs/';
 
-const ItemDetail = ({ item }) => {
+const ItemDetail = ({ item }: ItemInfo) => {
   const isLeader = item.leaders[0].name;
   const rsvp = item.club.meetings[0].startedAt;
 
@@ -39,7 +41,7 @@ const ItemDetail = ({ item }) => {
           <span>{item.club.description}</span>
           <h4>모임 일정</h4>
           <ul>
-            {item.club.meetings.map((meeting) => (
+            {item.club.meetings.map((meeting: MeetingsInfo) => (
               <li key={meeting.order}>
                 {meeting.order}회차 {meeting.startedAt.substring(0, 4)}년{' '}
                 {meeting.startedAt.substring(5, 7)}/

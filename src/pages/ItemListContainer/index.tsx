@@ -5,6 +5,7 @@ import * as S from './style';
 import ItemBox from '@pages/ItemBox';
 import NavBar from '@components/NavBar';
 import { FiSearch } from 'react-icons/fi';
+import { ItemInfo } from '../../libs';
 
 const ItemListContainer = () => {
   const [items, setItems] = useState([]);
@@ -22,7 +23,7 @@ const ItemListContainer = () => {
     itemHandler();
   }, []);
 
-  const searchHandler = (event) => {
+  const searchHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const search = event.target.value;
     if (search) {
       setSearchItem(search);
@@ -30,7 +31,7 @@ const ItemListContainer = () => {
     } else setSearchParams({});
   };
 
-  const filterHandler = (event) => {
+  const filterHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedPlace = event.target.value;
     if (selectedPlace) {
       setSearchItem(selectedPlace);
@@ -63,12 +64,12 @@ const ItemListContainer = () => {
           </select>
         </S.SearchBar>
         {items
-          .filter((val) => {
+          .filter((val: ItemInfo) => {
             if (searchItem === '') return val;
             else if (val.club.name.includes(searchItem)) return val;
             else if (val.club.place === searchItem) return val;
           })
-          .map((item) => (
+          .map((item: ItemInfo) => (
             <ItemBox key={item.club.id} item={item} />
           ))}
       </S.Container>
