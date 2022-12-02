@@ -8,7 +8,7 @@ import { FiSearch } from 'react-icons/fi';
 import { ItemInfo } from '../../libs';
 
 const ItemListContainer = () => {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<ItemInfo[]>([]);
   const [searchItem, setSearchItem] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 

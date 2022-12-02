@@ -3,7 +3,7 @@ import Card from '@components/Layout/Card';
 import * as S from './style';
 import { BsSuitHeart } from 'react-icons/bs';
 import ItemDetail from '@components/ItemDetail';
-import { ItemInfo } from '@libs/';
+import { ItemInfo } from '../../libs';
 
 const ItemBox = ({ item }: ItemInfo) => {
   const isLeader = item.leaders[0].name;

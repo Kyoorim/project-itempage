@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 const URL = 'https://api.json-generator.com/templates/ePNAVU1sgGtQ/data';
-const TOKEN = '22swko029o3wewjovgvs9wcqmk8p3ttrepueemyj';
+
+// 이 자리에 토큰을 입력하시면 됩니다!!!!
+const TOKEN = '';
 
 export const getItems = async () => {
   try {

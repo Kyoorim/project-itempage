@@ -1,7 +1,10 @@
-export interface ItemInfo {
+export type ItemInfo = {
   club: ClubInfo;
-  leaders: LeadersInfo;
-}
+  leaders: LeadersInfo[];
+  price: number;
+  partners: Array<string>;
+  createdAt: string;
+};
 
 export interface ClubInfo {
   coverUrl: string;

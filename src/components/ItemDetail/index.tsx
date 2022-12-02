@@ -4,7 +4,7 @@ import * as S from './style';
 import { ItemInfo } from '@libs/';
 import { MeetingsInfo } from '@libs/';
 
-const ItemDetail = ({ item }: ItemInfo) => {
+const ItemDetail = ({ item }) => {
   const isLeader = item.leaders[0].name;
   const rsvp = item.club.meetings[0].startedAt;
 
@@ -52,7 +52,7 @@ const ItemDetail = ({ item }: ItemInfo) => {
         </S.InfoContainer>
       </S.Modal>
     </S.Backwall>,
-    document.getElementById('modal')
+    document.getElementById('modal') as HTMLElement
   );
 };
 
